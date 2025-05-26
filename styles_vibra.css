@@ -1,0 +1,684 @@
+/* styles_vibra.css - Refatorado para Menu Superior e Melhorias Visuais */
+
+/* Vibra Palette (Aproximada) */
+:root {
+  --vibra-green: #00573F; /* Verde Escuro */
+  --vibra-yellow: #FFDA00; /* Amarelo */
+  --vibra-blue: #0047BB; /* Azul Vibrante */
+  --vibra-light-gray: #f0f4f7; /* Cinza mais claro e azulado */
+  --vibra-white: #ffffff;
+  --vibra-dark-text: #333333;
+  --vibra-medium-gray: #f8f9fa;
+  --vibra-border-gray: #dee2e6;
+  --header-height: 65px; /* Altura do menu superior */
+  --vibra-primary-green: #006633; /* Main Green */
+  --vibra-secondary-green: #009933; /* Lighter Green */
+  --vibra-accent-yellow: #FFCC00; /* Accent Yellow */
+  --vibra-blue: #0047BB; /* Vibra Blue */
+  --vibra-white: #FFFFFF;
+  --vibra-light-gray: #F5F5F5;
+  --vibra-medium-gray: #e9eff1; /* Background gray */
+  --vibra-dark-gray: #333333; /* Dark Text */
+  --vibra-border-gray: #e0e0e0;
+
+    /* Status Colors */
+    --status-realizado: #009933; /* Secondary Green */
+    --status-emandamento: #0047BB; /* Vibra Blue */
+    --status-pendente: #FFCC00; /* Accent Yellow */
+
+    --header-height: 65px; /* Altura do menu superior */
+}
+
+body {
+  /* display: flex; Removido - não mais necessário com menu superior */
+  min-height: 100vh;
+  background: var(--vibra-light-gray);
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding-top: var(--header-height); /* Espaço para o menu superior fixo */
+}
+
+/* Padrão de linhas diagonais */
+.diagonal-pattern {
+    height: 10px;
+    width: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--vibra-primary-green),
+        var(--vibra-primary-green) 10px,
+        var(--vibra-secondary-green) 10px,
+        var(--vibra-secondary-green) 20px,
+        var(--vibra-accent-yellow) 20px,
+        var(--vibra-accent-yellow) 30px,
+        var(--vibra-blue) 30px,
+        var(--vibra-blue) 40px
+    );
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 40px 0;
+  color: var(--vibra-dark-text);
+}
+
+/* --- Top Navigation --- */
+.top-nav {
+  background: var(--vibra-primary-green);
+  color: var(--vibra-white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+}
+.logo img {
+    height: 30px;
+    width: auto;
+    display: block; /* remove comportamento inline */
+    margin: 0; /* remove margens automáticas */
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1200px; /* Limita a largura do conteúdo do menu */
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav-title {
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.mobile-menu-toggle {
+  display: none; /* Oculto por padrão */
+  background: none;
+  border: none;
+  color: var(--vibra-white);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  margin: 0 5px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.95em;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, border-bottom 0.2s;
+  border-bottom: 3px solid transparent;
+  border-radius: 4px 4px 0 0; /* Leve arredondamento superior */
+}
+
+.nav-link i {
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  background: rgba(0, 0, 0, 0.15);
+  color: var(--vibra-white);
+  border-bottom: 3px solid var(--vibra-yellow);
+}
+
+/* --- Main Content Area --- */
+.main-content {
+  padding: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 3000px; /* Limita a largura do conteúdo principal */
+  margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+
+.heatmap-container {
+  width: 100%;
+  margin: 0 auto;
+  background: var(--vibra-white);
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.07);
+  padding: 30px;
+  transition: background-color 0.3s;
+  max-width: 1920px; /* você pode adicionar isso */
+}
+
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--vibra-border-gray);
+  padding-bottom: 15px;
+}
+
+.calendar-header h1 {
+  color: var(--vibra-green);
+  font-size: 1.8em;
+  margin: 0;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--vibra-blue);
+  color: var(--vibra-white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.view-toggle-btn:hover {
+  background: #003a9e; /* Azul um pouco mais escuro */
+  transform: translateY(-1px);
+}
+
+.view-toggle-btn i {
+  font-size: 1em;
+}
+
+/* --- Tabela Heatmap --- */
+.scrollable-table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--vibra-border-gray);
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.tema-heatmap-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* margin-top: 20px; Removido, margem no scrollable-table */
+}
+
+.tema-heatmap-table th,
+.tema-heatmap-table td {
+  padding: 14px;
+  text-align: center;
+  border: 1px solid var(--vibra-border-gray);
+  transition: background-color 0.2s;
+  font-size: 0.95em;
+  vertical-align: middle; /* Alinha verticalmente ao centro */
+}
+
+.tema-heatmap-table td:hover {
+  background-color: #f1f3f5; /* Cinza mais sutil no hover */
+}
+
+.tema-heatmap-table th {
+  background: var(--vibra-medium-gray);
+  font-weight: 600;
+  color: var(--vibra-dark-text);
+  white-space: nowrap; /* Evita quebra de linha nos meses */
+}
+
+.tema-label {
+  text-align: left !important;
+  font-weight: 600;
+  padding-left: 15px !important;
+  min-width: 200px; /* Ajuste de largura */
+  color: var(--vibra-dark-text);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.tema-label:hover {
+  color: var(--vibra-green);
+}
+
+.heatmap-cell {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 65px; /* Garante largura mínima */
+  height: 50px; /* Altura fixa para células compactas */
+}
+
+.heatmap-cell-active {
+  background-color: var(--vibra-white);
+}
+
+.cell-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 8px; /* Posição do indicador */
+  transform: translateX(-50%);
+  height: 8px;
+  width: 75%;
+  background: var(--theme-color, var(--vibra-blue));
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.heatmap-cell-active:hover .cell-indicator {
+  opacity: 0.8;
+  width: 80%;
+  bottom: 10px; /* Leve animação no hover */
+}
+
+.heatmap-cell.expanded .cell-indicator {
+  position: relative;
+  left: 0;
+  bottom: auto; /* Remove posicionamento absoluto */
+  transform: none;
+  margin: 0 auto 8px auto; /* Margem abaixo do indicador */
+  width: 60%; /* Indicador menor na visão expandida */
+}
+
+.heatmap-cell-empty {
+  background: #fdfdfe; /* Fundo quase branco para células vazias */
+  cursor: default;
+}
+
+.tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  display: none;
+  z-index: 1001; /* Acima do menu */
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+/* --- Modal Cronograma --- */
+.cronograma-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+  display: none; /* Alterado para none por padrão */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cronograma-modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.cronograma-content {
+  background: var(--vibra-white);
+  border-radius: 12px;
+  padding: 35px 30px 25px 30px;
+  width: 90%;
+  max-width: 850px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.cronograma-modal.show .cronograma-content {
+  transform: scale(1);
+}
+
+.fechar-cronograma {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2.2em;
+  color: #aaa;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.fechar-cronograma:hover {
+  color: var(--vibra-dark-text);
+  transform: rotate(90deg);
+}
+
+#cronograma-titulo {
+  color: var(--vibra-green);
+  margin: 0 0 25px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--vibra-border-gray);
+  font-size: 1.6em;
+}
+
+.cronograma-acao {
+  border-left: 5px solid var(--tema-cor, var(--vibra-blue));
+  margin: 18px 0;
+  padding: 15px 18px;
+  background: #f9fafb;
+  border-radius: 6px;
+  transition: background 0.2s, box-shadow 0.2s;
+  font-size: 0.95em;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.cronograma-acao:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* Cores de status usando paleta Vibra */
+.cronograma-acao.afazer {
+  background: #fff9e6;
+  border-left-color: var(--vibra-yellow);
+}
+
+.cronograma-acao.emandamento {
+  background: #e6f4ff;
+  border-left-color: var(--vibra-blue);
+}
+
+.cronograma-acao.realizado {
+  background: #e6f7ee;
+  border-left-color: var(--vibra-green);
+  opacity: 0.9;
+}
+
+.cronograma-acao strong {
+  color: var(--vibra-dark-text);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.cronograma-acao span {
+  color: #555;
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+.cronograma-acao span b {
+  font-weight: 600;
+  color: #333;
+}
+
+/* --- Visão Expandida --- */
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  max-height: 150px;
+  overflow-y: auto;
+  text-align: left; /* Alinha texto à esquerda */
+}
+
+/* Custom scrollbar for activity list */
+.activity-list::-webkit-scrollbar {
+  width: 6px;
+}
+.activity-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+.activity-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+.activity-list::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+.activity-item {
+  background: rgba(248, 249, 250, 0.95);
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border-left: 3px solid var(--theme-color, var(--vibra-blue));
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default; /* Remove cursor pointer */
+}
+
+.activity-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.activity-item:last-child {
+  margin-bottom: 0;
+}
+
+.activity-name {
+  display: block;
+  font-weight: 600;
+  color: var(--vibra-dark-text);
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 2px 0;
+}
+
+.heatmap-cell.expanded {
+  height: auto; /* Altura automática */
+  min-height: 120px; /* Altura mínima */
+  padding: 12px;
+  background: #fdfdfd;
+  transition: all 0.3s ease;
+  border: 1px solid var(--vibra-border-gray);
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.04);
+  vertical-align: top;
+  cursor: default; /* Remove cursor pointer */
+}
+
+
+/* --- Responsividade --- */
+
+/* Telas Médias (Tablets) */
+@media (max-width: 992px) {
+  .nav-container {
+    padding: 0 15px;
+  }
+  .nav-link {
+    padding: 10px 12px;
+    font-size: 0.9em;
+  }
+  .main-content {
+    padding: 25px;
+  }
+  .calendar-header h1 {
+    font-size: 1.6em;
+  }
+  .tema-heatmap-table th,
+  .tema-heatmap-table td {
+    padding: 12px 10px;
+    font-size: 0.9em;
+  }
+  .tema-label {
+    min-width: 180px;
+  }
+  .heatmap-cell {
+    min-width: 55px;
+  }
+}
+
+/* Telas Pequenas (Móveis) */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 60px; /* Altura menor no mobile */
+  }
+  body {
+    padding-top: var(--header-height);
+  }
+  .nav-container {
+    position: relative; /* Para posicionar o menu dropdown */
+  }
+  .mobile-menu-toggle {
+    display: block; /* Mostra o botão de menu */
+  }
+  .nav-links {
+    display: none; /* Esconde os links por padrão */
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--vibra-green);
+    flex-direction: column;
+    align-items: stretch; /* Links ocupam toda a largura */
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .nav-links.open {
+    display: flex; /* Mostra os links quando aberto */
+  }
+  .nav-link {
+    margin: 5px 10px;
+    padding: 12px 20px;
+    border-bottom: none; /* Remove borda inferior */
+    border-left: 3px solid transparent; /* Borda lateral para indicar hover/ativo */
+    border-radius: 4px;
+    text-align: left;
+  }
+  .nav-link.active,
+  .nav-link:hover {
+    border-bottom: none;
+    border-left: 3px solid var(--vibra-yellow);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .main-content {
+    padding: 20px 15px;
+  }
+  .calendar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .calendar-header h1 {
+    font-size: 1.4em;
+  }
+  .view-toggle-btn {
+    font-size: 0.85em;
+    padding: 9px 15px;
+  }
+  .tema-heatmap-table th,
+  .tema-heatmap-table td {
+    padding: 10px 6px;
+    font-size: 0.85em;
+  }
+  .tema-label {
+    min-width: 150px;
+    font-size: 0.9em;
+  }
+  .heatmap-cell {
+    min-width: 45px;
+    height: 45px;
+  }
+  .cell-indicator {
+    height: 6px;
+    width: 70%;
+    bottom: 6px;
+  }
+  .heatmap-cell.expanded {
+    min-height: 100px;
+    padding: 10px;
+  }
+  .activity-name {
+    font-size: 12px;
+  }
+  .cronograma-content {
+    width: 95%;
+    max-height: 80vh;
+    padding: 25px 20px 15px 20px;
+  }
+  #cronograma-titulo {
+    font-size: 1.4em;
+  }
+}
+
+/* Telas Muito Pequenas */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 55px;
+  }
+  .nav-title {
+    font-size: 1.1em;
+  }
+  .main-content {
+    padding: 15px 10px;
+  }
+  .calendar-header h1 {
+    font-size: 1.2em;
+  }
+  .view-toggle-btn {
+    font-size: 0.8em;
+    padding: 8px 12px;
+  }
+  .tema-heatmap-table th,
+  .tema-heatmap-table td {
+    padding: 8px 4px;
+    font-size: 0.75em;
+  }
+  .tema-label {
+    min-width: 100px;
+    font-size: 0.8em;
+  }
+  .heatmap-cell {
+    min-width: 38px;
+    height: 40px;
+  }
+  .cell-indicator {
+    height: 5px;
+  }
+  .cronograma-content {
+    padding: 20px 15px 10px 15px;
+  }
+  #cronograma-titulo {
+    font-size: 1.2em;
+  }
+  .cronograma-acao {
+    padding: 10px 12px;
+    font-size: 0.85em;
+  }
+  .activity-name {
+    font-size: 11px;
+  }
+  .heatmap-cell.expanded {
+    min-height: 90px;
+    padding: 8px;
+  }
+  .activity-list {
+    max-height: 110px;
+  }
+}
+
+                                                                                                                                                                                                                                                                                                                                                                           

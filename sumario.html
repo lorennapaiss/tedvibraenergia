@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumário Executivo - Cronograma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles (2).css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Padrão de linhas diagonais no topo -->
+    <div class="diagonal-pattern"></div>
+    <nav id="top-nav" class="top-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="/_negativo_logo_tagline_vibra.png" alt="Vibra Energia">
+            </div>
+            <div class="nav-brand">
+                <span class="nav-title">Sumário Executivo</span>
+            </div>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li>
+          <a href="index.html" class="nav-link" data-page="inicio">
+            <i class="fas fa-regular fa-house"></i>
+            <span>Início</span>
+          </a>
+        </li>
+        <li>
+          <a href="calendário.html" class="nav-link" data-page="mapa">
+            <i class="fas fa-th"></i>
+            <span>Mapa Anual</span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="sumario.html" class="nav-link active" data-page="relatorios">
+            <i class="fas fa-chart-line"></i>
+            <span>Sumário Executivo</span>
+          </a>
+        </li>
+        <li>
+          <a href="cronograma.html" class="nav-link" data-page="config">
+            <i class="fas fa-solid fa-calendar-days"></i>
+            <span>Cronograma</span>
+          </a>
+        </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <h1>Sumário Executivo</h1>
+            <section id="filtros">
+                <label for="mes">Mês:</label>
+                <select id="mes"></select>
+                <label for="responsavel">Responsável:</label>
+                <select id="responsavel"></select>
+                <label for="tema">Tema:</label>
+                <select id="tema"></select>
+                <button onclick="filtrarSumario()">Filtrar</button>
+                <button onclick="resetarFiltrosSumario()">Limpar Filtros</button>
+            </section>
+            <section id="kpis">
+                <div class="kpi" id="kpi-total"></div>
+                <div class="kpi" id="kpi-concluidas"></div>
+                <div class="kpi" id="kpi-andamento"></div>
+                <div class="kpi" id="kpi-pendentes"></div>
+            </section>
+            <section id="graficos">
+                <div class="graficos-grid">
+                    <div class="grafico-container">
+                        <h2>Status das Atividades por Mês</h2>
+                        <canvas id="graficoStatusMes"></canvas>
+                    </div>
+                    <div class="grafico-container">
+                        <h2>Atividades por Responsável</h2>
+                        <canvas id="graficoResponsavel"></canvas>
+                    </div>
+                    <div class="grafico-container">
+                        <h2>Atividades por Tema</h2>
+                        <canvas id="graficoTema"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="script (2).js"></script>
+</body>
+</html>
+

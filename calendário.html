@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa Anual de Temas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles_vibra.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Padrão de linhas diagonais no topo -->
+  <div class="diagonal-pattern"></div>
+  <nav id="top-nav" class="top-nav">
+    <div class="nav-container">
+      <div class="logo">
+                <img src="/_negativo_logo_tagline_vibra.png" alt="Vibra Energia">
+            </div>
+      <div class="nav-brand">
+        <span class="nav-title">Calendário Anual</span>
+      </div>
+      
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links">
+        <li>
+          <a href="index.html" class="nav-link" data-page="inicio">
+            <i class="fas fa-regular fa-house"></i>
+            <span>Início</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link active" data-page="mapa">
+            <i class="fas fa-th"></i>
+            <span>Mapa Anual</span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="sumario.html" class="nav-link" data-page="relatorios">
+            <i class="fas fa-chart-line"></i>
+            <span>Sumário Executivo</span>
+          </a>
+        </li>
+        <li>
+          <a href="cronograma.html" class="nav-link" data-page="config">
+            <i class="fas fa-solid fa-calendar-days"></i>
+            <span>Cronograma</span>
+          </a>
+        </li>
+        <!-- Adicione mais páginas aqui -->
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main-content" id="main-content">
+    <div class="heatmap-container">
+      <div class="calendar-header">
+        <h1>Calendário Anual de Projetos</h1>
+        <button id="toggle-view" class="view-toggle-btn">
+          <i class="fas fa-expand-alt"></i>
+          <span>Visualização Expandida</span>
+        </button>
+      </div>
+      <div id="loading" class="loading"><i class="fas fa-spinner fa-spin"></i> Carregando...</div>
+      <div class="scrollable-table">
+        <table class="tema-heatmap-table" id="heatmap-table" role="table" aria-label="Tabela de Mapa Anual de Temas">
+          <thead>
+            <tr>
+              <th scope="col">Tema</th>
+              <th scope="col">Jan</th>
+              <th scope="col">Fev</th>
+              <th scope="col">Mar</th>
+              <th scope="col">Abr</th>
+              <th scope="col">Mai</th>
+              <th scope="col">Jun</th>
+              <th scope="col">Jul</th>
+              <th scope="col">Ago</th>
+              <th scope="col">Set</th>
+              <th scope="col">Out</th>
+              <th scope="col">Nov</th>
+              <th scope="col">Dez</th>
+            </tr>
+          </thead>
+          <tbody id="heatmap-body" role="rowgroup"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal do cronograma -->
+    <div id="cronograma-modal" class="cronograma-modal" style="display:none;">
+      <div class="cronograma-content">
+        <span id="fechar-cronograma" class="fechar-cronograma" title="Fechar">&times;</span>
+        <h2 id="cronograma-titulo"></h2>
+        <div id="cronograma-detalhes"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tooltip" role="tooltip"></div>
+  <script src="cronograma.js"></script>
+</body>
+</html>
+
